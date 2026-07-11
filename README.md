@@ -1,23 +1,9 @@
-# Codex AI Presence showcase
+# Codex AI Presence — showcase
 
-This is the static, dependency-free showcase site for the [Codex AI Presence skill](https://github.com/walkingIssue/Codex-AI-presence). It intentionally has no build step and is ready to publish as a GitHub Pages project site at `https://walkingissue.github.io/Codex-AI-presence-pages/`.
+A standalone visual showcase for the [Codex AI Presence skill](https://github.com/walkingIssue/Codex-AI-presence): local Kokoro voice output, the waveform-reactive Strand Orb, and the project-local workflow around them.
 
-```powershell
-python -m http.server 8080
-```
+View the [live showcase](https://walkingissue.github.io/Codex-AI-presence-pages/).
 
-Then open <http://localhost:8080>.
+The site is a dependency-free static page built with HTML, CSS, and JavaScript. Its recordings and orb captures document the installation flow, voice configuration, and presence experience across Codex sessions.
 
-## Add recordings
-
-The showcase currently embeds these compressed recordings from `media/videos/`:
-
-- `installation.mp4` — fresh checkout through first working response
-- `voice-swap.mp4` — changing the local Kokoro voice
-- `other-instance.mp4` — the presence workflow in another Codex instance
-
-Replace or add recordings using the same names, or update the `<source>` paths in `index.html`.
-
-Verified orb captures live in `media/screenshots/`: `orb-idle.png` shows the quiet baseline and `orb-speaking.png` shows the brighter geometric response during Isabella playback. Add further stills there as the showcase grows.
-
-The page is deliberately plain HTML, CSS, and JavaScript so GitHub Pages can serve it directly from the repository root.
+For installation and configuration details, see the [skill repository](https://github.com/walkingIssue/Codex-AI-presence).
