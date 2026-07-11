@@ -22,6 +22,7 @@
         <a href="#how-it-works">How it works</a>
         <a href="#states">States</a>
         <a href="#media">Media</a>
+        <a href="#configuration">Configure</a>
         <a href="https://github.com/walkingIssue/Codex-AI-presence" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -152,22 +153,53 @@
             <div class="media-slot media-slot-arc"><video class="media-video" controls playsinline preload="metadata" aria-label="Other Codex instance recording"><source src="media/videos/other-instance.mp4" type="video/mp4"></video><span class="slot-kicker">VIDEO / 03</span><div><strong>Other instance</strong><small>media/videos/other-instance.mp4</small></div></div>
             <div class="media-card-copy"><span>THE WORKFLOW</span><h3>A second instance, same presence.</h3><p>Show how the local voice layer follows the project it is attached to.</p></div>
           </article>
+          <article class="media-card media-card-feature">
+            <div class="media-slot media-slot-poem"><video class="media-video" controls playsinline preload="metadata" aria-label="Short Strand Orb showcase"><source src="media/videos/showcase-poem.mp4" type="video/mp4"></video><span class="slot-kicker">VIDEO / 04</span><div><strong>Short Orb showcase</strong><small>media/videos/showcase-poem.mp4</small></div></div>
+            <div class="media-card-copy"><span>QUICK LOOK</span><h3>The presence in a few seconds.</h3><p>A short visual study of the Orb moving from idle into playback.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="configuration-section" id="configuration">
+        <div class="section-heading configuration-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span> CONFIGURATION</p>
+            <h2>Make the presence yours.</h2>
+          </div>
+          <p>The skill exposes the same matrix at runtime through <code>configure.py show</code> and <code>configure.py interactive</code>.</p>
+        </div>
+        <div class="configuration-table-wrap">
+          <table class="configuration-table">
+            <thead><tr><th>SETTING</th><th>WHAT IT CHANGES</th><th>OPTIONS / DEFAULT</th></tr></thead>
+            <tbody>
+              <tr><td>Voice / timbre</td><td>Changes the Kokoro voice used for responses.</td><td>Installed voice ID / <code>bf_isabella</code></td></tr>
+              <tr><td>Speed</td><td>Trades natural pacing for faster or slower playback.</td><td><code>0.5x–2.0x</code> / <code>1.08x</code></td></tr>
+              <tr><td>Playback</td><td>Starts speaking as chunks arrive or waits for the complete waveform.</td><td><code>stream</code> or <code>quality</code> / <code>stream</code></td></tr>
+              <tr><td>Provider</td><td>Selects the local inference route.</td><td><code>cpu</code>, <code>cuda</code>, or <code>directml</code> / <code>cpu</code></td></tr>
+              <tr><td>Volume</td><td>Sets the main response volume; visible progress has its own ratio setting below.</td><td><code>0–100%</code> / <code>20%</code></td></tr>
+              <tr><td>Commentary volume</td><td>Sets visible progress commentary as a percentage of the main response volume.</td><td><code>0–100%</code> of main / <code>50%</code></td></tr>
+              <tr><td>Visible progress</td><td>Speaks visible tool and status commentary along with final answers.</td><td><code>on</code> or <code>off</code> / <code>off</code></td></tr>
+              <tr><td>Strand Orb</td><td>Shows or hides the optional waveform-reactive companion window.</td><td><code>on</code> or <code>off</code> / optional</td></tr>
+              <tr><td>Scope</td><td>Controls which Codex rollouts may trigger the voice worker.</td><td><code>session</code>, <code>project</code>, or <code>off</code></td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section class="install-section" id="install">
         <div>
-          <p class="eyebrow"><span class="eyebrow-dot"></span> START SMALL</p>
-          <h2>One skill. One worker. One living response.</h2>
-          <p>Codex AI Presence is an open-source, project-local voice and visual layer for Codex. Explore the skill repository for the worker, Strand Orb, and provider paths.</p>
-          <a class="button button-primary" href="https://github.com/walkingIssue/Codex-AI-presence" target="_blank" rel="noreferrer">Explore the skill</a>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> START HERE</p>
+          <h2>Put it in your Codex session.</h2>
+          <p>Copy this prompt, paste it into the agent of your choice, and let the skill guide the setup and configuration conversation.</p>
+          <div class="copy-actions">
+            <button class="button button-primary" id="copyInstallPrompt" type="button">Copy install prompt</button>
+            <span class="copy-status" id="copyStatus" role="status" aria-live="polite"></span>
+          </div>
+          <p class="install-source">Source: <a href="https://github.com/walkingIssue/Codex-AI-presence" target="_blank" rel="noreferrer">walkingIssue/Codex-AI-presence</a></p>
         </div>
-        <div class="code-card">
-          <div class="code-card-top"><span>PROJECT SURFACE</span><span class="code-dots">● ● ●</span></div>
-          <pre><code><span class="code-muted">voice</span>  local Kokoro worker
-<span class="code-muted">orb</span>    waveform-reactive Strand Orb
-<span class="code-muted">routes</span> CPU / NVIDIA CUDA / Intel Arc
-<span class="code-green">mode</span>   session-aware and project-local</code></pre>
+        <div class="code-card prompt-card">
+          <div class="code-card-top"><span>CODEX PROMPT</span><span class="code-dots">● ● ●</span></div>
+          <pre id="installPrompt"><code>Install the `codex-voice` skill from walkingIssue/Codex-AI-presence, path skills/codex-voice. Ask me whether voice should apply only to this Codex session or to all sessions in this project. After setup, show me the full configuration matrix and ask which settings I want to change.</code></pre>
         </div>
       </section>
     </main>

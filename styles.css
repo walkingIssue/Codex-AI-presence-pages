@@ -147,6 +147,7 @@ h1 em { color: var(--cyan); font-family: Georgia, "Times New Roman", serif; font
 code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; font-size: .9em; }
 .media-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 18px; }
 .media-card { min-width: 0; }
+.media-card-feature { grid-column: 1 / -1; }
 .media-slot { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; aspect-ratio: 16 / 9; padding: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--panel-strong); }
 .media-slot::before { position: absolute; inset: 0; content: ""; opacity: .8; pointer-events: none; background: radial-gradient(circle at 70% 35%, rgba(143, 244, 228, .18), transparent 35%), linear-gradient(135deg, transparent 30%, rgba(141, 183, 255, .06)); }
 .media-slot > * { position: relative; z-index: 1; }
@@ -156,8 +157,10 @@ code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; f
 .media-slot-install { min-height: 0; background-color: #0c2023; }
 .media-slot-orb { background-color: #17172a; }
 .media-slot-arc { background-color: #17231c; }
+.media-slot-poem { background-color: #0d1425; }
 .media-slot-orb::before { background: radial-gradient(circle at 50% 45%, rgba(197, 168, 255, .28), transparent 34%), repeating-radial-gradient(circle at 50% 45%, transparent 0 24px, rgba(197, 168, 255, .1) 25px 26px); }
 .media-slot-arc::before { background: radial-gradient(circle at 50% 45%, rgba(181, 241, 160, .2), transparent 28%), linear-gradient(120deg, transparent 35%, rgba(181, 241, 160, .09) 36% 37%, transparent 38%); }
+.media-slot-poem::before { background: radial-gradient(circle at 62% 48%, rgba(141, 183, 255, .2), transparent 28%), linear-gradient(135deg, transparent 36%, rgba(143, 244, 228, .08) 37% 38%, transparent 39%); }
 .slot-kicker { color: var(--cyan); font-size: 9px; letter-spacing: .18em; }
 .slot-icon { align-self: center; color: var(--cyan); font-size: 52px; font-weight: 200; text-shadow: 0 0 30px rgba(143, 244, 228, .5); }
 .media-slot div { display: flex; flex-direction: column; gap: 4px; }
@@ -168,12 +171,27 @@ code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; f
 .media-card-copy h3 { margin: 8px 0 5px; font-size: 17px; font-weight: 500; letter-spacing: -.03em; }
 .media-card-copy p { margin: 0; color: var(--muted); font-size: 12px; }
 
+.configuration-section { padding: 110px 0 95px; border-top: 1px solid var(--line); }
+.configuration-heading { margin-bottom: 42px; }
+.configuration-table-wrap { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); }
+.configuration-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 12px; }
+.configuration-table th { padding: 14px 18px; color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; font-size: 9px; font-weight: 500; letter-spacing: .16em; text-align: left; }
+.configuration-table td { padding: 17px 18px; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.55; vertical-align: top; }
+.configuration-table td:first-child { width: 22%; color: var(--ink); font-weight: 600; }
+.configuration-table td:nth-child(2) { width: 46%; }
+.configuration-table code { color: var(--cyan); }
+
 .install-section { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: center; padding: 100px 0 140px; border-top: 1px solid var(--line); }
 .install-section h2 { max-width: 480px; }
 .code-card { border: 1px solid var(--line); background: #050d10; box-shadow: var(--shadow); }
 .code-card-top { display: flex; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid var(--line); color: var(--faint); font-family: "SFMono-Regular", Consolas, monospace; font-size: 9px; letter-spacing: .15em; }
 .code-dots { color: var(--faint); letter-spacing: 3px; }
 .code-card pre { margin: 0; padding: 25px; overflow-x: auto; color: var(--ink); font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; line-height: 2.15; }
+.prompt-card pre { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8; }
+.copy-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 24px; }
+.copy-status { color: var(--green); font-size: 11px; }
+.install-source { margin-top: 18px; color: var(--faint); font-size: 11px; }
+.install-source a { color: var(--cyan); }
 .code-muted { color: var(--faint); }
 .code-green { color: var(--green); }
 
@@ -209,6 +227,7 @@ code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; f
   .content-section { padding: 100px 0; }
   .media-grid { grid-template-columns: 1fr; }
   .media-card-wide { grid-column: auto; }
+  .media-card-feature { grid-column: auto; }
   .media-slot, .media-slot-install { min-height: 0; }
   .footer { flex-direction: column; font-size: 9px; }
 }

@@ -98,5 +98,43 @@ demoButton.addEventListener("click", () => {
   speakingUntil = performance.now() + 5200;
 });
 
+const copyInstallPrompt = document.querySelector("#copyInstallPrompt");
+const installPrompt = document.querySelector("#installPrompt");
+const copyStatus = document.querySelector("#copyStatus");
+
+async function copyText(value) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+
+  const helper = document.createElement("textarea");
+  helper.value = value;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "fixed";
+  helper.style.opacity = "0";
+  document.body.appendChild(helper);
+  helper.select();
+  const copied = document.execCommand("copy");
+  helper.remove();
+  if (!copied) throw new Error("Clipboard access was unavailable");
+}
+
+if (copyInstallPrompt && installPrompt && copyStatus) {
+  copyInstallPrompt.addEventListener("click", async () => {
+    try {
+      await copyText(installPrompt.textContent.trim());
+      copyInstallPrompt.textContent = "Copied";
+      copyStatus.textContent = "Paste it into a Codex session.";
+      window.setTimeout(() => {
+        copyInstallPrompt.textContent = "Copy install prompt";
+        copyStatus.textContent = "";
+      }, 3200);
+    } catch (error) {
+      copyStatus.textContent = "Select the prompt manually to copy it.";
+    }
+  });
+}
+
 window.addEventListener("resize", resizeCanvas);
 requestAnimationFrame(drawOrb);
