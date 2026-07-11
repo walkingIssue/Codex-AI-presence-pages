@@ -127,6 +127,17 @@ h1 em { color: var(--cyan); font-family: Georgia, "Times New Roman", serif; font
 .feature-index { color: var(--cyan); font-family: Georgia, serif; font-size: 18px; }
 .feature-arrow { color: var(--faint); font-size: 18px; }
 
+.state-section { padding-top: 70px; }
+.state-heading { margin-bottom: 42px; }
+.state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.state-card { margin: 0; border: 1px solid var(--line); background: var(--panel); }
+.state-image { display: grid; place-items: center; min-height: 320px; padding: 24px; border-bottom: 1px solid var(--line); background: #050d10; }
+.state-image img { display: block; width: min(100%, 512px); height: auto; aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 0 30px rgba(143, 244, 228, .16)); }
+.state-card figcaption { padding: 20px 22px 24px; }
+.state-card figcaption > span { color: var(--cyan); font-size: 9px; letter-spacing: .18em; }
+.state-card h3 { margin: 9px 0 5px; font-size: 22px; font-weight: 500; letter-spacing: -.03em; }
+.state-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
 .media-section { padding-top: 50px; }
 .media-heading { grid-template-columns: 1fr .8fr; }
 .media-heading > p { justify-self: end; }
@@ -177,6 +188,7 @@ code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; f
   .media-heading > p { justify-self: start; }
   .pipeline { grid-template-columns: 1fr; }
   .pipeline-line { transform: rotate(90deg); }
+  .state-grid { grid-template-columns: 1fr; }
   .media-grid { grid-template-columns: 1fr 1fr; }
   .media-card-wide { grid-column: 1 / -1; }
 }
