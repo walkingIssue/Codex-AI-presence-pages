@@ -38,3 +38,12 @@ window.orbApi.onMoveMode((enabled) => {
 The host sends activity states (`idle`, `thinking`, `tool`, `skill`, `cli`, `waiting`, `error`), playback lifecycle (`speaking` or `idle`), and normalized audio features (`amplitude`, `rms`, `peak`, and spectral `bands`). The renderer owns the interpretation and can be an SVG, Canvas, WebGL, CSS, Live2D, VRM adapter, or any other visual surface Electron can render from a local entry page. The bridge does not expose Node.js, assistant text, tool names, paths, or raw tool output to the avatar.
 
 The contract is intentionally small and experimental. For installation and configuration details, see the [skill repository](https://github.com/walkingIssue/Codex-AI-presence); the live API shape is also shown in the [Avatar API section](https://walkingissue.github.io/Codex-AI-presence-pages/#avatar-api).
+
+## Early avatar renderer preview
+
+Your Codex companion does not have to be an orb anymore. We are prototyping a separate avatar-renderer skill that can bring VTuber/Live2D models into the same local Electron presence window.
+
+![Early preview of a VTuber-style avatar running inside the presence window](media/screenshots/vtuber-avatar-preview.png)
+![VTuber-style avatar in an active speech state](media/screenshots/vtuber-avatar-speaking.png)
+
+Audio and activity in. Avatar expressions and actions out. More soon.

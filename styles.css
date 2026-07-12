@@ -157,6 +157,17 @@ h1 em { color: var(--cyan); font-family: Georgia, "Times New Roman", serif; font
 .api-event-row:first-child { border-top: 0; }
 .api-event-row code { color: var(--cyan); }
 .api-event-row strong { color: var(--ink); font-weight: 500; }
+.avatar-preview { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items: stretch; margin-top: 24px; border: 1px solid rgba(197, 168, 255, .2); background: linear-gradient(120deg, rgba(197, 168, 255, .08), rgba(7, 17, 21, .72)); }
+.avatar-preview-image { display: grid; place-items: center; min-height: 360px; padding: 22px; overflow: hidden; background: #151515; }
+.avatar-preview-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 620px; }
+.avatar-preview-gallery figure { min-width: 0; margin: 0; }
+.avatar-preview-gallery img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #151515; }
+.avatar-preview-gallery figcaption { margin-top: 9px; color: var(--faint); font-size: 9px; letter-spacing: .16em; text-align: center; }
+.avatar-preview-copy { align-self: center; padding: 35px 34px 35px 0; }
+.avatar-preview-copy > span { color: var(--violet); font-size: 9px; letter-spacing: .18em; }
+.avatar-preview-copy h3 { max-width: 370px; margin: 25px 0 13px; font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 400; line-height: 1.02; letter-spacing: -.06em; }
+.avatar-preview-copy p { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.avatar-preview-copy .avatar-preview-note { margin-top: 18px; color: var(--cyan); font-size: 11px; letter-spacing: .03em; }
 
 .media-section { padding-top: 50px; }
 .media-heading { grid-template-columns: 1fr .8fr; }
@@ -231,6 +242,8 @@ code { color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; f
   .api-callout { grid-template-columns: 1fr; gap: 9px; }
   .api-callout p { grid-column: auto; }
   .api-events-heading { grid-template-columns: 1fr; gap: 12px; }
+  .avatar-preview { grid-template-columns: 1fr; }
+  .avatar-preview-copy { padding: 0 24px 30px; }
   .media-grid { grid-template-columns: 1fr 1fr; }
   .media-card-wide { grid-column: 1 / -1; }
 }
