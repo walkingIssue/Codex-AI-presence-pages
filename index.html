@@ -21,6 +21,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#how-it-works">How it works</a>
         <a href="#states">States</a>
+        <a href="#avatar-api">Avatars</a>
         <a href="#media">Media</a>
         <a href="#configuration">Configure</a>
         <a href="https://github.com/walkingIssue/Codex-AI-presence" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
@@ -128,6 +129,82 @@
             <div class="state-image"><img src="media/screenshots/orb-speaking.png" alt="Strand Orb in its bright geometric speaking state" loading="lazy"></div>
             <figcaption><span>02 / PLAYBACK</span><h3>Audio-reactive speech</h3><p>The strands brighten and deform with the spoken response.</p></figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section class="content-section avatar-api-section" id="avatar-api">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span> OPEN RENDERER CONTRACT</p>
+            <h2>Bring your own presence.</h2>
+          </div>
+          <p>The experimental v0.1 avatar API keeps the host small and the visual layer open. If Electron can render it from a local entry page, it can be an orb, a character, a creature, or a completely different visual language.</p>
+        </div>
+
+        <div class="api-callout">
+          <span class="api-callout-label">THE RULE</span>
+          <strong>Design anything. Consume the events. Render locally.</strong>
+          <p>SVG, Canvas, WebGL, CSS, Live2D, VRM, or your own renderer are valid directions when bundled as a self-contained local avatar.</p>
+        </div>
+
+        <div class="api-grid">
+          <article class="api-card">
+            <span>01 / BUNDLE</span>
+            <h3>One manifest, one entry page.</h3>
+            <p>A bundle declares its identity and a relative HTML entry point. The project-local manager validates the bundle before the Electron host loads it.</p>
+          </article>
+          <article class="api-card">
+            <span>02 / EVENTS</span>
+            <h3>Small signals, open interpretation.</h3>
+            <p>Activity, playback lifecycle, amplitude, and spectral bands are the contract. The avatar decides whether those signals become strands, expressions, particles, or motion.</p>
+          </article>
+          <article class="api-card">
+            <span>03 / HOST</span>
+            <h3>Local and isolated by default.</h3>
+            <p>The renderer runs in the Electron window with context isolation and no Node.js integration. It receives presence signals, not assistant text or private tool output.</p>
+          </article>
+        </div>
+
+        <div class="api-contract-grid">
+          <div class="code-card">
+            <div class="code-card-top"><span>AVATAR.JSON</span><span class="code-dots">o o o</span></div>
+            <pre><code>{
+  "schema": "codex-ai-presence/avatar/v0.1",
+  "id": "my-avatar",
+  "name": "My Presence",
+  "version": "0.1.0",
+  "entry": "index.html",
+  "capabilities": ["activity", "audio", "move-mode"]
+}</code></pre>
+          </div>
+          <div class="code-card">
+            <div class="code-card-top"><span>RENDERER.JS</span><span class="code-dots">o o o</span></div>
+            <pre><code>const stopAudio = window.orbApi.onAudioEvent((event) =&gt; {
+  if (event.type === "activity") setMode(event.state);
+  if (event.type === "state") setSpeaking(event.state === "speaking");
+  if (event.type === "audio") {
+    setAmplitude(event.amplitude);
+    setSpectrum(event.bands || []);
+  }
+});
+
+const stopMove = window.orbApi.onMoveMode((enabled) =&gt; {
+  document.body.classList.toggle("move-mode", enabled);
+});</code></pre>
+          </div>
+        </div>
+
+        <div class="api-events">
+          <div class="api-events-heading">
+            <span>EVENT SHAPE / v0.1</span>
+            <p>Packets are samples, not frame commands. Smooth and decay values locally, and ignore unknown fields for forward compatibility.</p>
+          </div>
+          <div class="api-event-list">
+            <div class="api-event-row"><code>activity</code><span><strong>state:</strong> idle, thinking, tool, skill, cli, waiting, or error</span></div>
+            <div class="api-event-row"><code>state</code><span><strong>state:</strong> speaking or idle; brackets the actual playback clock</span></div>
+            <div class="api-event-row"><code>audio</code><span><strong>amplitude, rms, peak, bands:</strong> normalized 0..1 voice features</span></div>
+            <div class="api-event-row"><code>move-mode</code><span><strong>enabled:</strong> whether the user is holding the drag modifier</span></div>
+          </div>
         </div>
       </section>
 
